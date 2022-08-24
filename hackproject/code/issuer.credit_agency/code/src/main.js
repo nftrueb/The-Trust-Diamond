@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const ANSII_GREEN = '\u001b[32m'
 const ANSII_RESET = '\x1b[0m'
-const PORT = 3000
+const PORT = 3001
 
 //-------------------------------------------------------------------
 // STEP 1 - Set configuration values for Verity application server
@@ -17,32 +17,48 @@ const PORT = 3000
 const verityUrl = process.env["VERITY_URL"] || "https://vas.pps.evernym.com"
 const domainDid = process.env["DOMAIN_DID"]
 const xApiKey = process.env["X_API_KEY"]
+const credDefId = process.env["CREDENTIAL_DEFINITION_ID"]
 
 // Verify that .env variables are set
 let error = false;
 if (!verityUrl) {
-	console.log("The 'VERITY_URL' environment variable must be set in the '.env' file.")
+	console.log("The 'VERITY_URL' environment variable must be set.")
 	error = true;
 }
 if (!domainDid) {
-	console.log("The 'DOMAIN_DID' environment variable must be set in the '.env' file.")
+	console.log("The 'DOMAIN_DID' environment variable must be set.")
 	error = true;
 }
 if (!xApiKey) {
-	console.log("The 'X_API_KEY' environment variable must be set in the '.env' file.")
+	console.log("The 'X_API_KEY' environment variable must be set.")
+	error = true;
+}
+if (!credDefId) {
+	console.log("The 'CREDENTIAL_DEFINITION_ID' environment variable is not set.")
 	error = true;
 }
 if (error) {
 	process.exit(1);
 }
 
-// Maps containing promises for the started interactions. The threadId is used as the map key
-const updateConfigsMap = new Map()		// Update configs
+//-------------------------------------------------------------------
+// STEP 2 - Specify data for credential to issue
+// NOTE: Make sure you use ALL fields from the schema you used for a credential definition
+//-------------------------------------------------------------------
+
+// Credential data
+const credentialData = {
+	"credit_score": "710", 
+	"taxable_income": "15000", 
+};
+
+// Maps containing promises for the started interactions - threadId is used as the map key
+const updateConfigsMap = new Map() 		// Update configs
 const relCreateMap = new Map()			// Relationship create
 const relInvitationMap = new Map()		// Relationship invitation
-const proofRequestMap = new Map()		// Proof request
+const issueCredentialMap = new Map()	// Issue Credential
 
-// Map for connection accepted promise - relationship DID is used as the key
+// Map for connection accepted promise - relationship DID is used as the map key
 const connectionAccepted = new Map()
 
 // Update webhook protocol is synchronous and does not support threadId
@@ -53,7 +69,6 @@ let relationshipDid;
 
 // Public URL for the webhook endpoint
 let webhookUrl = null;
-
 
 /**
  * Sends a message to the Verity Application Service via the Verity REST API
@@ -80,7 +95,8 @@ async function sendVerityRESTMessage(qualifier, msgFamily, msgFamilyVersion, msg
 	const url = urljoin(verityUrl, 'api', domainDid, msgFamily, msgFamilyVersion, threadId)
 	console.log(`Posting message to ${ANSII_GREEN}${url}${ANSII_RESET}`)
 	console.log(`${ANSII_GREEN}${JSON.stringify(message, null, 4)}${ANSII_RESET}`)
-	// const xApiKey_sub = xApiKey.substring(0, xApiKey.length-1); 
+	console.log(`${xApiKey}`)
+	// const xApiKey_sub = xApiKey.substring(0, xApiKey.length-1);
 	return axios({
 		method: 'POST',
 		url: url,
@@ -92,12 +108,12 @@ async function sendVerityRESTMessage(qualifier, msgFamily, msgFamilyVersion, msg
 }
 
 /**
- * Initialize and run verifier
+ * Initialize and run issuer
  */
 async function run() {
 
 	//-------------------------------------------------------------------
-	// STEP 2 - Get webhook endpoint from ngrok
+	// STEP 3 - Get webhook endpoint from ngrok
 	//-------------------------------------------------------------------
 	if (!webhookUrl) {
 		const ngrok = await axios.get("http://localhost:4040/api/tunnels");
@@ -106,7 +122,7 @@ async function run() {
 	}
 
 	//-------------------------------------------------------------------
-	// STEP 3 - Update webhook endpoint
+	// STEP 4 - Update webhook endpoint
 	//-------------------------------------------------------------------
 	const webhookMessage = {
 		comMethod: {
@@ -126,7 +142,7 @@ async function run() {
 	await updateWebhook
 
 	//-------------------------------------------------------------------
-	// STEP 4 - Update Verity server configuration
+	// STEP 5 - Update Verity server configuration
 	//-------------------------------------------------------------------
 	const updateConfigMessage = {
 		configs: [
@@ -136,7 +152,7 @@ async function run() {
 			},
 			{
 				name: 'name',
-				value: 'Verifier'
+				value: 'Issuer_credit'
 			}
 		]
 	}
@@ -149,9 +165,9 @@ async function run() {
 	await updateConfigs
 
 	//-------------------------------------------------------------------
-	// STEP 5 - Relationship creation 
+	// STEP 6 - Relationship creation 
 	//-------------------------------------------------------------------
-	// create relationship key
+	// Create relationship key
 	const relationshipCreateMessage = {}
 	const relThreadId = uuid4()
 	const relationshipCreate =
@@ -161,11 +177,11 @@ async function run() {
 	await sendVerityRESTMessage('123456789abcdefghi1234', 'relationship', '1.0', 'create', relationshipCreateMessage, relThreadId)
 	relationshipDid = await relationshipCreate
 
-	// create invitation for the relationship
+	// Create invitation for the relationship
 	const relationshipInvitationMessage = {
 		'~for_relationship': relationshipDid,
-		goalCode: 'request-proof',
-		goal: 'To request a proof'
+		goalCode: 'issue-vc',
+		goal: 'To issue a credential'
 	}
 	const relationshipInvitation =
 		new Promise(function (resolve, reject) {
@@ -177,12 +193,12 @@ async function run() {
 	await QR.toFile('public/qrcode.png', inviteUrl)
 
 	//-------------------------------------------------------------------
-	// STEP 6 - Wait for and process all connection and credential requests
+	// STEP 7 - Wait for and process all connection and credential requests
 	//-------------------------------------------------------------------
 	while (true) {
 
 		//-------------------------------------------------------------------
-		// STEP 6.1 - Wait for the user to scan the QR code and accept the connection
+		// STEP 7.1 - Wait for the user to scan the QR code and accept the connection
 		//-------------------------------------------------------------------
 		const connection =
 			new Promise(function (resolve, reject) {
@@ -192,53 +208,23 @@ async function run() {
 		await connection
 
 		//-------------------------------------------------------------------
-		// STEP 6.2 - Proof request
+		// STEP 7.2 - Credential issuance
 		//-------------------------------------------------------------------
-		const proofMessage = {
+		const credentialMessage = {
 			'~for_relationship': relationshipDid,
-			name: 'Proof of Name',
-			proof_attrs: [
-				{
-					name: 'first_name',
-					restrictions: [
-					// It is recommended for increased security to include a restriction, such as the cred_def_id
-					// {
-					//	"cred_def_id": "Aa4sRAaxcSB4CqNJgnEUVk:3:CL:334784:latest"
-					// }
-					],
-					self_attest_allowed: false
-				},
-				{
-					name: 'last_name',
-					restrictions: [],
-					self_attest_allowed: false
-				}
-			]
-
-			// name: 'Credit Check',
-			// proof_attrs: [
-			// 	{
-			// 		name: 'credit_score',
-			// 		restrictions: [ { "cred_def_id": "Aa4sRAaxcSB4CqNJgnEUVk:3:CL:334784:latest" } ],
-			// 		self_attest_allowed: true
-			// 	}
-			// ]
+			cred_def_id: credDefId,
+			credential_values: credentialData,
+			price: 0,
+			comment: 'MyCredential',
+			auto_issue: true
 		}
-		const proofThreadId = uuid4()
-		const requestProof =
+		const issueCredThreadId = uuid4()
+		const credentialOffer =
 			new Promise(function (resolve, reject) {
-				proofRequestMap.set(proofThreadId, resolve)
+				issueCredentialMap.set(issueCredThreadId, resolve)
 			})
-		await sendVerityRESTMessage('BzCbsNYhMrjHiqZDTUASHg', 'present-proof', '1.0', 'request', proofMessage, proofThreadId)
-		const verificationResult = await requestProof
-
-		if (verificationResult === 'ProofValidated') {
-			console.log('Proof is validated!')
-			await wsSend({ type: "log", data: "Proof is validated" })
-		} else {
-			console.log('Proof is NOT validated')
-			await wsSend({ type: "log", data: "Proof is NOT validated" })
-		}
+		await sendVerityRESTMessage('BzCbsNYhMrjHiqZDTUASHg', 'issue-credential', '1.0', 'offer', credentialMessage, issueCredThreadId)
+		await credentialOffer
 	}
 }
 
@@ -275,12 +261,12 @@ app.ws('/', function (ws, req) {
 			wsSend(logsBeforeReady.shift());
 		}
 		if (msg == "info") {
-			wsSend({ type: "info", data: { verityUrl, domainDid, webhookUrl } });
+			wsSend({ type: "info", data: { verityUrl, domainDid, webhookUrl, credDefId, credentialData } });
 		}
 	});
 });
 
-// Verity Application Service will send REST API callbacks to this endpoint
+// Verity Application Server will send REST API callbacks to this endpoint
 app.post('/webhook', async (req, res) => {
 	const message = req.body
 	const threadId = message['~thread'] ? message['~thread'].thid : null
@@ -292,22 +278,22 @@ app.post('/webhook', async (req, res) => {
 	switch (message['@type']) {
 		case 'did:sov:123456789abcdefghi1234;spec/configs/0.6/COM_METHOD_UPDATED':
 			await wsSend({ type: "log", data: "Webhook updated" })
-			await webhookResolve('webhook updated')
+			webhookResolve('webhook updated')
 			break
 
 		case 'did:sov:123456789abcdefghi1234;spec/update-configs/0.6/status-report':
 			await wsSend({ type: "log", data: "Configuration updated" })
-			await updateConfigsMap.get(threadId)('config updated')
+			updateConfigsMap.get(threadId)('config updated')
 			break
 
 		case 'did:sov:123456789abcdefghi1234;spec/relationship/1.0/created':
 			await wsSend({ type: "log", data: "Connection created" })
-			await relCreateMap.get(threadId)(message.did)
+			relCreateMap.get(threadId)(message.did)
 			break
 
 		case 'did:sov:123456789abcdefghi1234;spec/relationship/1.0/invitation':
 			await wsSend({ type: "log", data: "Connection invitation created" })
-			await relInvitationMap.get(threadId)(message.inviteURL)
+			relInvitationMap.get(threadId)(message.inviteURL)
 			break
 
 		case 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/connections/1.0/request-received':
@@ -316,7 +302,7 @@ app.post('/webhook', async (req, res) => {
 
 		case 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/connections/1.0/response-sent':
 			await wsSend({ type: "log", data: "Connection accepted for " + message.myDID })
-			await connectionAccepted.get(message.myDID)('connection accepted')
+			connectionAccepted.get(message.myDID)('connection accepted')
 			break
 
 		case 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/trust_ping/1.0/sent-response':
@@ -330,15 +316,20 @@ app.post('/webhook', async (req, res) => {
 			await connectionAccepted.get(did)('reuse')
 			break;
 
-		case 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/presentation-result':
-			await wsSend({ type: "log", data: "<pre>"+JSON.stringify(message["requested_presentation"],null,4)+"</pre>" })
-			await proofRequestMap.get(threadId)(message.verification_result)
+		case 'did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/issue-credential/1.0/sent':
+			if (message.msg['credentials~attach']) {
+				await wsSend({ type: "log", data: "Credential issued" })
+				await issueCredentialMap.get(threadId)('credential issued')
+			}
+			else {
+				await wsSend({ type: "log", data: "Credential sent" })
+			}
 			break
 
 		default:
 			if (message.description.code == "rejection") {
-				await wsSend({ type: "log", data: "Proof rejected" })
-				await proofRequestMap.get(threadId)('proof rejected')
+				await wsSend({ type: "log", data: "Credential rejected" })
+				await issueCredentialMap.get(threadId)('credential rejected')
 			}
 			else {
 				console.log(`Unexpected message type ${message['@type']}`)

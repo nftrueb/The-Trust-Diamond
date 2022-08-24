@@ -26,3 +26,37 @@ T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335421:latest
 
 X_Api_Key: 
 FJcsmvKhMary4mqrfay1txG5XgMGwzy4x6NNRvCyypHD:6TZ18cAQMemfKh5J3SdtfMY96NAod1oi6MdvYw3JJXebjrszboPjdKG14RyzU8HtCAGyxs2f8XVKtwFTfd9uvc3
+
+
+Government ID Schema: 
+
+Attributes: 
+first_name
+middle_initial
+last_name
+date_of_birth
+social_security_number
+address
+
+Schema Name: DFS-hackathon-diamond-gov-id
+
+Schema Id: T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-gov-id:1.0
+
+Credential Definition Name: GovernmentId
+
+Credential Definition Id: T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335481:latest
+
+
+Credit Agency Schema: 
+
+Attributes: 
+credit_score
+taxable_income
+
+Schema Name: DFS-hackathon-diamond-credit-report
+
+Schema Id: T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-credit-report:1.0
+
+Credential Definition Name: CreditAgency
+
+Credential Definition Id: T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335483:latest

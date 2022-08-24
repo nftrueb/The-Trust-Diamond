@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  issuer_gov:
+    platform: linux/x86_64
+    restart: always
+    container_name: issuer_gov
+    image: issuer_gov
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./code/src:/root/issuer_gov/src
+    networks:
+      - issuer_gov_network
+
+networks:
+  issuer_gov_network:

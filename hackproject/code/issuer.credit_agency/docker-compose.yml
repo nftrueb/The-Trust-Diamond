@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+
+  issuer_credit:
+    platform: linux/x86_64
+    restart: always
+    container_name: issuer_credit
+    image: issuer_credit
+    build:
+      context: .
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./code/src:/root/issuer_credit/src
+    networks:
+      - issuer_credit_network
+
+networks:
+  issuer_credit_network:
