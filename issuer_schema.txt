@@ -1,0 +1,28 @@
+Issuer DID:
+T5GU4Qu8BfPzZM1Bd3wAmo
+
+Issuer VerKey:
+FDEjNUb6DAmVj88oULyR2YVfAAxnJLhQtG6Lc4evRq78
+
+
+Schema attributes:
+first_name
+last_name
+age
+credit_score
+
+Schema Name:
+DFS-hackathon-diamond-trueb-test
+
+Schema Id:
+T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-trueb-test:1.0
+
+Credential Definition Name:
+nftrueb
+
+Credential Definition Id:
+T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335421:latest
+
+
+X_Api_Key: 
+FJcsmvKhMary4mqrfay1txG5XgMGwzy4x6NNRvCyypHD:6TZ18cAQMemfKh5J3SdtfMY96NAod1oi6MdvYw3JJXebjrszboPjdKG14RyzU8HtCAGyxs2f8XVKtwFTfd9uvc3
