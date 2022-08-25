@@ -98,7 +98,7 @@ RUN cd /root/verifier && npm install
 RUN rm -rf /var/lib/apt/lists/*
 COPY supervisord.conf /etc/supervisord.conf
 
-EXPOSE 3000
+EXPOSE 3002
 
 #### Entrypoint
 ENTRYPOINT ["/usr/bin/supervisord","-c","/etc/supervisord.conf"]

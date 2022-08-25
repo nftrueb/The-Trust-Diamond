@@ -1,7 +1,7 @@
 <html>
 <head>
 	<script>
-		let socket = new WebSocket("ws://localhost:3001/");
+		let socket = new WebSocket("ws://localhost:3002/");
 		const cred_sent = 'Credential sent'; 
 		const cred_accepeted = 'Credential issued'; 
 		const cred_rejected = 'Credential rejected'; 
@@ -30,7 +30,7 @@
 			const html = "<h1 " + style_params + ">Crendentials Rejected!</h1>"; 
 			body.innerHTML = html; 
 		}
-
+    
 		function wsInit() {
 			socket.onopen = function(e) {
 				console.log("[open] Connection established");
@@ -43,13 +43,13 @@
 				const data = JSON.parse(event.data);
 				if (data.type == "info") {
 					updateDiv("info", "<pre>"+JSON.stringify(data.data,null,4)+"</pre>")
-				} else if (data.type == 'log' && data.data == cred_sent) { 
-					setPendingView(); 
-				} else if (data.type == "log" && data.data == cred_accepeted) { 
-					setSuccessView(); 
-				} else if (data.type == "log" && data.data == cred_rejected) { 
-					setFailureView(); 
 				}
+				else if (data.type == "log") {
+					updateDiv("log", data.data);
+				}
+				else {
+					updateDiv("log", event.data);
+        }
 			};
 
 			socket.onclose = function(event) {

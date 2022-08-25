@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const ANSII_GREEN = '\u001b[32m'
 const ANSII_RESET = '\x1b[0m'
-const PORT = 3000
+const PORT = 3002
 
 //-------------------------------------------------------------------
 // STEP 1 - Set configuration values for Verity application server
@@ -196,6 +196,7 @@ async function run() {
 		//-------------------------------------------------------------------
 		// STEP 6.2 - Proof request
 		//-------------------------------------------------------------------
+
 		const proofMessage = {
 			'~for_relationship': relationshipDid,
 			name: 'Proof of Name',

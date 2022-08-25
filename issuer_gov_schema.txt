@@ -1,0 +1,26 @@
+DOMAIN_DID:
+2ZReXsMeo8kF9iVbHGYHg1
+
+X_Api_Key:
+FJcsmvKhMary4mqrfay1txG5XgMGwzy4x6NNRvCyypHD:6TZ18cAQMemfKh5J3SdtfMY96NAod1oi6MdvYw3JJXebjrszboPjdKG14RyzU8HtCAGyxs2f8XVKtwFTfd9uvc3
+
+Issuer DID:
+T5GU4Qu8BfPzZM1Bd3wAmo
+
+Issuer VerKey:
+FDEjNUb6DAmVj88oULyR2YVfAAxnJLhQtG6Lc4evRq78
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Government ID Schema:
+
+Schema Name: DFS-hackathon-diamond-gov-id
+Attributes:
+    first_name
+    middle_initial
+    last_name
+    date_of_birth
+    social_security_number
+    address
+Schema Id: T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-gov-id:1.0
+Credential Definition Name: GovernmentId
+Credential Definition Id: T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335481:latest
