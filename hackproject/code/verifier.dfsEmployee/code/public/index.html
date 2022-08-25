@@ -1,12 +1,34 @@
 <html>
 <head>
 	<script>
-		let socket = new WebSocket("ws://localhost:3000/");
-		
+		let socket = new WebSocket("ws://localhost:3001/");
+		const cred_sent = 'Credential sent'; 
+		const cred_accepeted = 'Credential issued'; 
+		const cred_rejected = 'Credential rejected'; 
+		const style_params = 'style="text-align: center; margin-top: 100px;"';
+
 		function updateDiv(id, data) {
 			const div = document.getElementById(id)
 			const html = div.innerHTML + "<br/>" + data;
 			div.innerHTML = html;
+		}
+
+		function setPendingView() { 
+			const body = document.getElementById("body"); 
+			const html = "<h1 " + style_params + ">Crendentials Sent!</h1><br/><h3 " + style_params + ">Please accept credentials in ConnectMe shortly</h3>"; 
+			body.innerHTML = html; 
+		}
+
+		function setSuccessView() { 
+			const body = document.getElementById("body"); 
+			const html = "<h1 " + style_params + ">Crendentials Issued!</h1>"; 
+			body.innerHTML = html; 
+		}		
+
+		function setFailureView() { 
+			const body = document.getElementById("body"); 
+			const html = "<h1 " + style_params + ">Crendentials Rejected!</h1>"; 
+			body.innerHTML = html; 
 		}
 
 		function wsInit() {
@@ -21,12 +43,12 @@
 				const data = JSON.parse(event.data);
 				if (data.type == "info") {
 					updateDiv("info", "<pre>"+JSON.stringify(data.data,null,4)+"</pre>")
-				}
-				else if (data.type == "log") {
-					updateDiv("log", data.data);
-				}
-				else {
-					updateDiv("log", event.data);
+				} else if (data.type == 'log' && data.data == cred_sent) { 
+					setPendingView(); 
+				} else if (data.type == "log" && data.data == cred_accepeted) { 
+					setSuccessView(); 
+				} else if (data.type == "log" && data.data == cred_rejected) { 
+					setFailureView(); 
 				}
 			};
 
@@ -47,28 +69,20 @@
 	</script>
 </head>
 
-<body>
-	<h1>Sample Verifier</h1>
-	<table>
+<body id="body">
+	<h1 style="text-align: center; margin-top: 100px; ">Please Verify Your Credentials</h1>
+	<table style="margin: auto;" >
 		<tr>
 			<td style="text-align: center;">
-				<h3>Scan QR code to be verified</h3>
-			</td>
-			<td style="text-align: center;">
-				<h3>Verifier Info</h3>
+				<h3>Scan QR code to share the required fields with Discover</h3>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<img src="/qrcode.png" />
 			</td>
-			<td style="vertical-align: text-top;">
-				<div id="info"></div>
-			</td>
 		</tr>
 	</table>
-	<h2>Logs</h2>
-	<div id="log"></div>
 
 	<script>
 		wsInit();

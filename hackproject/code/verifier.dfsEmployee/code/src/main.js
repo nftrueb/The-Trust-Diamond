@@ -17,6 +17,8 @@ const PORT = 3000
 const verityUrl = process.env["VERITY_URL"] || "https://vas.pps.evernym.com"
 const domainDid = process.env["DOMAIN_DID"]
 const xApiKey = process.env["X_API_KEY"]
+const GOV_CREDENTIAL_DEFINITION_ID = process.env["T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335481:latest"]
+const CREDIT_CREDENTIAL_DEFINITION_ID = process.env["T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335483:latest"]
 
 // Verify that .env variables are set
 let error = false;
@@ -200,29 +202,54 @@ async function run() {
 			proof_attrs: [
 				{
 					name: 'first_name',
-					restrictions: [
-					// It is recommended for increased security to include a restriction, such as the cred_def_id
-					// {
-					//	"cred_def_id": "Aa4sRAaxcSB4CqNJgnEUVk:3:CL:334784:latest"
-					// }
-					],
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
 					self_attest_allowed: false
 				},
 				{
 					name: 'last_name',
-					restrictions: [],
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'date_of_birth',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'social_security_number',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'address',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'credit_score',
+					restrictions: [{
+						"cred_def_id": CREDIT_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'taxable_income',
+					restrictions: [{
+						"cred_def_id": CREDIT_CREDENTIAL_DEFINITION_ID
+					}],
 					self_attest_allowed: false
 				}
 			]
-
-			// name: 'Credit Check',
-			// proof_attrs: [
-			// 	{
-			// 		name: 'credit_score',
-			// 		restrictions: [ { "cred_def_id": "Aa4sRAaxcSB4CqNJgnEUVk:3:CL:334784:latest" } ],
-			// 		self_attest_allowed: true
-			// 	}
-			// ]
 		}
 		const proofThreadId = uuid4()
 		const requestProof =
