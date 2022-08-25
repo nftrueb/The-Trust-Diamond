@@ -1,0 +1,18 @@
+Second Issuer Details
+
+DomainDID: ANohfDn4RRsQ9EtzeT8EpU
+API key: XNWUJfEZ16auEuNESvWxek7YaJdm55XbnXbTe5kX6xL:T9Jz9gf486485QxmxwMwc3SuB4D7EWJ4zoeRcgGfF2DZDWeURMw1iRgTqLjk8VdaVnzVh8ZYrkK3zbj3wuRG5tP
+
+Issuer DID: HxRrfwERfX4iAzfy7VdsJt
+Issuer VerKey: AF17hPzoT8T55XQzxPFoLoySyooKNJMW9KhHP4saRZpB
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Credit Agency Schema:
+
+Schema Name: DFS-hackathon-diamond-credit-report
+Attributes:
+    credit_score
+    taxable_income
+Schema Id: HxRrfwERfX4iAzfy7VdsJt:2:DFS-hackathon-diamond-credit-report:1.0
+Credential Definition Name: CreditReport
+Credential Definition Id: HxRrfwERfX4iAzfy7VdsJt:3:CL:335504:latest
