@@ -17,8 +17,8 @@
  
 ## Reference
 Data from Following links has been quoted or used as a template in this use case story
-https://trustoverip.github.io/WP0010-toip-foundation-whitepaper/trust/vcred_trust_triangle/
-https://github.discoverfinancial.com/dgisolf/digital-trust-wg/blob/master/taskforces/usecases/medical-office-visit.md
+* https://trustoverip.github.io/WP0010-toip-foundation-whitepaper/trust/vcred_trust_triangle/
+* https://github.discoverfinancial.com/dgisolf/digital-trust-wg/blob/master/taskforces/usecases/medical-office-visit.md
 
 ## Business Challenge
 In todays world Discover reaches out to any government agency or credit bureau for any information pertaining to a customer or prospective customer. There is obviously a wait time ranging from couple days to couple weeks before getting the information. Scenarios could be when applying for a new loan/credit card or existing customer having to go through credit bureau check during scenarios related to fraud on the account. 
