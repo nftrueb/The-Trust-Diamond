@@ -17,6 +17,8 @@ const PORT = 3002
 const verityUrl = process.env["VERITY_URL"] || "https://vas.pps.evernym.com"
 const domainDid = process.env["DOMAIN_DID"]
 const xApiKey = process.env["X_API_KEY"]
+const GOV_CREDENTIAL_DEFINITION_ID = process.env["T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335481:latest"]
+const CREDIT_CREDENTIAL_DEFINITION_ID = process.env["T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335483:latest"]
 
 // Verify that .env variables are set
 let error = false;
@@ -154,7 +156,6 @@ async function run() {
 	// create relationship key
 	const relationshipCreateMessage = {}
 	const relThreadId = uuid4()
-	console.log("relThreadId =", relThreadId)
 	const relationshipCreate =
 		new Promise(function (resolve, reject) {
 			relCreateMap.set(relThreadId, resolve)
@@ -195,100 +196,60 @@ async function run() {
 		//-------------------------------------------------------------------
 		// STEP 6.2 - Proof request
 		//-------------------------------------------------------------------
-		const govIdCredDefId = process.env["GOV_CREDENTENTIAL_ID"]
-        const creditReportCredDefId = process.env["CREDIT_AGENCY_CREDENTIAL_ID"]
 
 		const proofMessage = {
 			'~for_relationship': relationshipDid,
-			name: 'Proof of identity and credit eligibility',
+			name: 'Proof of Name',
 			proof_attrs: [
-			    //Fields that can come from anywhere or be manually entered.
-//			    {
-//                    name: 'email',
-//                    restrictions: [
-//                    ],
-//                    self_attest_allowed: true
-//                },
-//                {
-//                    name: 'phone_number',
-//                    restrictions: [
-//                    ],
-//                    self_attest_allowed: true
-//                },
-			    //Fields that must come from gov credentials
 				{
 					name: 'first_name',
-					restrictions: [
-					{
-					"cred_def_id": govIdCredDefId
-					}
-					],
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
 					self_attest_allowed: false
 				},
 				{
-                    name: 'last_name',
-                    restrictions: [
-                    {
-                    "cred_def_id": govIdCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-                {
-                    name: 'middle_initial',
-                    restrictions: [
-                    {
-                    "cred_def_id": govIdCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-                {
-                    name: 'date_of_birth',
-                    restrictions: [
-                    {
-                    "cred_def_id": govIdCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-                {
-                    name: 'social_security_number',
-                    restrictions: [
-                    {
-                    "cred_def_id": govIdCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-                {
-                    name: 'address',
-                    restrictions: [
-                    {
-                    "cred_def_id": govIdCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-				//Fields that must come from gov credentials
-                {
-                    name: 'credit_score',
-                    restrictions: [
-                    {
-                    "cred_def_id": creditReportCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
-                {
-                    name: 'taxable_income',
-                    restrictions: [
-                    {
-                    "cred_def_id": creditReportCredDefId
-                    }
-                    ],
-                    self_attest_allowed: false
-                },
+					name: 'last_name',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'date_of_birth',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'social_security_number',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'address',
+					restrictions: [{
+						"cred_def_id": GOV_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'credit_score',
+					restrictions: [{
+						"cred_def_id": CREDIT_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				},
+				{
+					name: 'taxable_income',
+					restrictions: [{
+						"cred_def_id": CREDIT_CREDENTIAL_DEFINITION_ID
+					}],
+					self_attest_allowed: false
+				}
 			]
 		}
 		const proofThreadId = uuid4()
