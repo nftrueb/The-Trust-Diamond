@@ -125,4 +125,4 @@ Customer Acquires proof of identification from issuer 2 ( Credit Bureau).
 Customer applies for credit card and is approved instantly.
 
 
- ![sequence-diag-instant-application-decision](./designs/images/uml/seq-diagram.png)
+ ![sequence-diag-instant-application-decision](/designs/images/uml/seq-diagram.PNG)
