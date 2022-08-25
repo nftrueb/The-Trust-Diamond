@@ -34,7 +34,7 @@ An Issuer issues a credential to a Holder.
 A Holder trusts the Issuer.
 A Verifier verifies a credential presented by a Holder.
 
-![trust-triangle](./designs/images/misc/trust-triangle.jpeg)
+![trust-triangle](/designs/images/misc/trust-triangle.png)
 
 First the issuer writes a Decentralized Identifier (DID) together with its public key (and any other cryptographic material needed for the issuer’s verifiable credentials) to a blockchain (or other sufficiently trusted public utility).
 Second, the issuer uses its private key to digitally sign a verifiable credential it issues to a qualified holder, who stores it in her own digital wallet. Note that for privacy preservation, this entire issuance process takes place ​off-chain​.
@@ -49,6 +49,8 @@ The goal is to demonstrate the end-to-end activities necessary for a customer to
 * present digital  credential as proof when needing any verifications to obtain Discover product/service
 *
 A variation of this scenario would be to consider any situation where DFS may have a business policy that requires proof of employment or income details,  identity verification or verification from any other agency. All of those can be obtained from the source and stored in customers wallet to be used for verification when needed.
+
+![trust-diamond-triangle](/designs/images/misc/trust-diamond-triangle.jpeg)
 
 ## Vernacular
  
