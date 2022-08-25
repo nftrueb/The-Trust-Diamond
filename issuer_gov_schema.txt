@@ -24,16 +24,3 @@ Attributes:
 Schema Id: T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-gov-id:1.0
 Credential Definition Name: GovernmentId
 Credential Definition Id: T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335481:latest
-
-//Not needed...
-Schema Name: DFS-hackathon-diamond-gov-id
-Attributes:
-    first_name
-    middle_initial
-    last_name
-    date_of_birth
-    social_security_number
-    address
-Schema Id: T5GU4Qu8BfPzZM1Bd3wAmo:2:DFS-hackathon-diamond-gov-id:1.1
-Credential Definition Name: GovernmentId
-Credential Definition Id: T5GU4Qu8BfPzZM1Bd3wAmo:3:CL:335502:latest

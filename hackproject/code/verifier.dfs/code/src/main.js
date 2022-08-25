@@ -9,7 +9,7 @@ require('dotenv').config()
 
 const ANSII_GREEN = '\u001b[32m'
 const ANSII_RESET = '\x1b[0m'
-const PORT = 3000
+const PORT = 3002
 
 //-------------------------------------------------------------------
 // STEP 1 - Set configuration values for Verity application server
@@ -80,6 +80,7 @@ async function sendVerityRESTMessage(qualifier, msgFamily, msgFamilyVersion, msg
 	const url = urljoin(verityUrl, 'api', domainDid, msgFamily, msgFamilyVersion, threadId)
 	console.log(`Posting message to ${ANSII_GREEN}${url}${ANSII_RESET}`)
 	console.log(`${ANSII_GREEN}${JSON.stringify(message, null, 4)}${ANSII_RESET}`)
+	// const xApiKey_sub = xApiKey.substring(0, xApiKey.length-1); 
 	return axios({
 		method: 'POST',
 		url: url,
@@ -153,6 +154,7 @@ async function run() {
 	// create relationship key
 	const relationshipCreateMessage = {}
 	const relThreadId = uuid4()
+	console.log("relThreadId =", relThreadId)
 	const relationshipCreate =
 		new Promise(function (resolve, reject) {
 			relCreateMap.set(relThreadId, resolve)
@@ -193,25 +195,100 @@ async function run() {
 		//-------------------------------------------------------------------
 		// STEP 6.2 - Proof request
 		//-------------------------------------------------------------------
+		const govIdCredDefId = process.env["GOV_CREDENTENTIAL_ID"]
+        const creditReportCredDefId = process.env["CREDIT_AGENCY_CREDENTIAL_ID"]
+
 		const proofMessage = {
 			'~for_relationship': relationshipDid,
-			name: 'Proof of Name',
+			name: 'Proof of identity and credit eligibility',
 			proof_attrs: [
+			    //Fields that can come from anywhere or be manually entered.
+			    {
+                    name: 'email',
+                    restrictions: [
+                    ],
+                    self_attest_allowed: true
+                },
+                {
+                    name: 'phone_number',
+                    restrictions: [
+                    ],
+                    self_attest_allowed: true
+                },
+			    //Fields that must come from gov credentials
 				{
 					name: 'first_name',
 					restrictions: [
-					// It is recommended for increased security to include a restriction, such as the cred_def_id
-					// {
-					//	"cred_def_id": "Aa4sRAaxcSB4CqNJgnEUVk:3:CL:334784:latest"
-					// }
+					{
+					"cred_def_id": govIdCredDefId
+					}
 					],
 					self_attest_allowed: false
 				},
 				{
-					name: 'last_name',
-					restrictions: [],
-					self_attest_allowed: false
-				}
+                    name: 'last_name',
+                    restrictions: [
+                    {
+                    "cred_def_id": govIdCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+                {
+                    name: 'middle_initial',
+                    restrictions: [
+                    {
+                    "cred_def_id": govIdCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+                {
+                    name: 'date_of_birth',
+                    restrictions: [
+                    {
+                    "cred_def_id": govIdCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+                {
+                    name: 'social_security_number',
+                    restrictions: [
+                    {
+                    "cred_def_id": govIdCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+                {
+                    name: 'address',
+                    restrictions: [
+                    {
+                    "cred_def_id": govIdCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+				//Fields that must come from gov credentials
+                {
+                    name: 'credit_score',
+                    restrictions: [
+                    {
+                    "cred_def_id": creditReportCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
+                {
+                    name: 'taxable_income',
+                    restrictions: [
+                    {
+                    "cred_def_id": creditReportCredDefId
+                    }
+                    ],
+                    self_attest_allowed: false
+                },
 			]
 		}
 		const proofThreadId = uuid4()
