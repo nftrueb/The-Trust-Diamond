@@ -203,18 +203,18 @@ async function run() {
 			name: 'Proof of identity and credit eligibility',
 			proof_attrs: [
 			    //Fields that can come from anywhere or be manually entered.
-			    {
-                    name: 'email',
-                    restrictions: [
-                    ],
-                    self_attest_allowed: true
-                },
-                {
-                    name: 'phone_number',
-                    restrictions: [
-                    ],
-                    self_attest_allowed: true
-                },
+//			    {
+//                    name: 'email',
+//                    restrictions: [
+//                    ],
+//                    self_attest_allowed: true
+//                },
+//                {
+//                    name: 'phone_number',
+//                    restrictions: [
+//                    ],
+//                    self_attest_allowed: true
+//                },
 			    //Fields that must come from gov credentials
 				{
 					name: 'first_name',
