@@ -72,44 +72,44 @@ A variation of this scenario would be to consider any situation where DFS may ha
  
 | Actor | Role | Goals | Details |
 | --- | --- | --- | --- |
-| <img src="./images/persona/discover-logo.png" width="60" height="60"> | Verifier | Uses  Credential capabilities to allow customers to verify income and identification credentials. | Leverages ecosystem of Digital Trust vendors, such as  Avast, to provide digital credential verification capabilities.  |
+| <img src="./images/persona/discover_logo.png" width="60" height="60"> | Verifier | Uses  Credential capabilities to allow customers to verify income and identification credentials. | Leverages ecosystem of Digital Trust vendors, such as  Avast, to provide digital credential verification capabilities.  |
 Federal Agency | Issuer | Federal/Government agency, a provider that allows for issuing identification credentials. | Identification provider partner for (prospective) customers of DFS |
 Credit Bureau | Issuer | Credit Bureau agency, a provider that allows for issuing credit score credentials or taxable income details from IRS. | Income provider partner for (prospective) customers of DFS  |
-<img src="./images/persona/customer.png" width="40" height="40"> Roger | Holder | Needs a Discover credit card and wants to present proof of identification, credit score and taxable income details in a secure manner for faster processing | (Prospective) Customer of DFS credit card carries a mobile device with a digital wallet containing verifiable credentials from a variety of issuers. |
+<img src="./images/persona/Boris.png" width="40" height="40"> Roger | Holder | Needs a Discover credit card and wants to present proof of identification, credit score and taxable income details in a secure manner for faster processing | (Prospective) Customer of DFS credit card carries a mobile device with a digital wallet containing verifiable credentials from a variety of issuers. |
 <img src="./images/misc/avast.png" width="50" height="50"> Avast | Vendor | Allow customers to request, store, manage, and present digital credentials from their mobile devices. | Digital Trust vendor and supplier of connect.me digital wallet. |
  
 ## Story
 
 ### Issuance of identification Credential
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger signs in to the Government agency portal.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger sees a feature to *Generate Secure Credential(s)*.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger signs in to the Government agency portal.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger sees a feature to *Generate Secure Credential(s)*.
 * The System presents the credential options.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger selects one or more credentials and clicks OK.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger selects one or more credentials and clicks OK.
 * The software generates a QR code and instructional text “Scan Credentials with your Digital Wallet App”.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger opens his <img src="./images/misc/avast.png" width="50" height="50"> Avast digital wallet, ```Connect.me```, and scans the QR code.
-* The ```Connect.me``` App prompts <img src="./images/persona/customer.png" width="40" height="40"> Roger with the messsage: “Government Agency is offering the following secure credentials, do you accept?”
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger initiates the process to accept the offer of secure credentials.
-* Credentials are sent to <img src="./images/persona/customer.png" width="40" height="40"> Roger's device and protected with the secure element of the device.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger opens his <img src="./images/misc/avast.png" width="50" height="50"> Avast digital wallet, ```Connect.me```, and scans the QR code.
+* The ```Connect.me``` App prompts <img src="./images/persona/Boris.png" width="40" height="40"> Roger with the messsage: “Government Agency is offering the following secure credentials, do you accept?”
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger initiates the process to accept the offer of secure credentials.
+* Credentials are sent to <img src="./images/persona/Boris.png" width="40" height="40"> Roger's device and protected with the secure element of the device.
 
 ### Issuance of Income Credential
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger visits the Credit Bureau website and requests information. 
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger visits the Credit Bureau website and requests information. 
 * The website displays a QR code and instructional text “Scan Request with your Digital Wallet App”.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger opens the ```Connect.Me``` App on his device and scans the QR code.
-* The ```Connect.me``` App prompts <img src="./images/persona/customer.png" width="40" height="40"> Roger with the message: "Credit Bureau is offering the following secure credentials, do you accept?”
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger initiates the process to accept the secure credential.
-* Credential is sent to  <img src="./images/persona/customer.png" width="40" height="40"> Roger's device and protected with the secure element of the device.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger opens the ```Connect.Me``` App on his device and scans the QR code.
+* The ```Connect.me``` App prompts <img src="./images/persona/Boris.png" width="40" height="40"> Roger with the message: "Credit Bureau is offering the following secure credentials, do you accept?”
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger initiates the process to accept the secure credential.
+* Credential is sent to  <img src="./images/persona/Boris.png" width="40" height="40"> Roger's device and protected with the secure element of the device.
 
 ### Applying for a Credit Card
-* One fine day <img src="./images/persona/customer.png" width="40" height="40"> Roger needs to apply for a 'credit card'/'personal loan'.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger visits <img src="./images/persona/discover-logo.png" width="50" height="40"> Discover website.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger fills the basic information needed to apply and then submits the request.
+* One fine day <img src="./images/persona/Boris.png" width="40" height="40"> Roger needs to apply for a 'credit card'/'personal loan'.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger visits <img src="./images/persona/discover_logo.png" width="50" height="40"> Discover website.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger fills the basic information needed to apply and then submits the request.
 * The web page displays a QR code and instructional text “Scan Request with your Digital Wallet App”.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger opens the ```Connect.Me``` App on his device and scans the QR code.
-* The ```Connect.me``` App prompts <img src="./images/persona/customer.png" width="40" height="40"> Roger with the message: " <img src="./images/persona/discover-logo.png" width="80" height="80"> Discover is requesting proof of identification, credit score and taxable income. Do you accept?”
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger accepts the credential request.
-* Using the ```Connect.me``` App, <img src="./images/persona/customer.png" width="40" height="40"> Roger selects the credentials in his wallet that will be used to respond to the request. 
-* Credential is securely transferred to and verified by <img src="./images/persona/discover-logo.png" width="50" height="40"> Discover.
-* <img src="./images/persona/customer.png" width="40" height="40"> Roger is approved for 'credit card'/'personal loan'.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger opens the ```Connect.Me``` App on his device and scans the QR code.
+* The ```Connect.me``` App prompts <img src="./images/persona/Boris.png" width="40" height="40"> Roger with the message: " <img src="./images/persona/discover_logo.png" width="80" height="80"> Discover is requesting proof of identification, credit score and taxable income. Do you accept?”
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger accepts the credential request.
+* Using the ```Connect.me``` App, <img src="./images/persona/Boris.png" width="40" height="40"> Roger selects the credentials in his wallet that will be used to respond to the request. 
+* Credential is securely transferred to and verified by <img src="./images/persona/discover_logo.png" width="50" height="40"> Discover.
+* <img src="./images/persona/Boris.png" width="40" height="40"> Roger is approved for 'credit card'/'personal loan'.
 
 ## Demo Workflow
  
