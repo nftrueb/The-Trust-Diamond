@@ -2,9 +2,8 @@
 <head>
 	<script>
 		let socket = new WebSocket("ws://localhost:3002/");
-		const cred_sent = 'Credential sent'; 
-		const cred_accepeted = 'Credential issued'; 
-		const cred_rejected = 'Credential rejected'; 
+		const validated = 'Proof is validated'; 
+		const not_validated = 'Proof is NOT validated'; 
 		const style_params = 'style="text-align: center; margin-top: 100px;"';
 
 		function updateDiv(id, data) {
@@ -13,15 +12,9 @@
 			div.innerHTML = html;
 		}
 
-		function setPendingView() { 
-			const body = document.getElementById("body"); 
-			const html = "<h1 " + style_params + ">Crendentials Sent!</h1><br/><h3 " + style_params + ">Please accept credentials in ConnectMe shortly</h3>"; 
-			body.innerHTML = html; 
-		}
-
 		function setSuccessView() { 
 			const body = document.getElementById("body"); 
-			const html = "<h1 " + style_params + ">Crendentials Issued!</h1>"; 
+			const html = "<h1 " + style_params + ">Your Credentials are Verified!</h1>"; 
 			body.innerHTML = html; 
 		}		
 
@@ -44,12 +37,11 @@
 				if (data.type == "info") {
 					updateDiv("info", "<pre>"+JSON.stringify(data.data,null,4)+"</pre>")
 				}
-				else if (data.type == "log") {
-					updateDiv("log", data.data);
+				else if (data.type == "log" && data.data == validated) { 
+					setSuccessView(); 
+				} else if (data.type == 'log' && data.data == not_validated) { 
+					setFailureView(); 
 				}
-				else {
-					updateDiv("log", event.data);
-        }
 			};
 
 			socket.onclose = function(event) {
@@ -69,8 +61,9 @@
 	</script>
 </head>
 
-<body id="body">
-	<h1 style="text-align: center; margin-top: 100px; ">Please Verify Your Credentials</h1>
+<body id="body" style="background-color: #fffcf0">
+	<img src="./discover_logo.png" style="display: block; margin-left: auto; margin-right: auto"/>
+	<h1 style="text-align: center; margin-top: auto; ">Please Verify Your Credentials</h1>
 	<table style="margin: auto;" >
 		<tr>
 			<td style="text-align: center;">
