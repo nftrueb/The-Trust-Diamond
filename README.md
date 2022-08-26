@@ -24,21 +24,15 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 | --- | --- |
 | Use Case | [Story](./hackproject/instant-application-decision.md) |
 | Design Thinking Miro Board | [The-Trust-Diamond-whiteboard](https://miro.com/app/board/uXjVPcw_DhQ=/) |
-| Design Thinking Playback Brief | [Playback Presentation](./presentations/thetrustdiamond-playback-brief.ppt)|
+| Design Thinking Playback Brief | [Playback Presentation](./presentations/thetrustdiamond-playback-brief.pptx)|
 | Concept Playback Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/Ea3upMuUI2dAgLz1HcZ8vlkBGwkGt37SmcK9-hbF-nx9KA?e=f6HTuw)|
 | Concept Show-n-Tell Video | [Video URL]() |
-| Code |  [Solution Readme](./hackprokect/README.md) |
+| Code |  [Solution Readme](./hackproject/code) |
 
-## Solution Decisions
-```
-Template Instructions: Optional Section. If the team has documented reasons for any of their business or technical decisions, itemize the links to the decision documents using the template in the /decisions folder.  Remove this section if nothing to list.
-```
-
-1. [ADR 01](./decisions/adr-01.md)
 
 ## Team Information
 
-Our team members came together because ...
+Although from the same Value Stream, most of us never worked together but heard about the good work each one of us have been doing. Our team members came together because we wanted to use this opportunity to know each other and be able to learn from each other.
  
 | Name | Business Unit |
 | --- | --- |
