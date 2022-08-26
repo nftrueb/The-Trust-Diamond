@@ -32,7 +32,7 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 
 ## Team Information
 
-Our team members came together because ...
+Although from the same Value Stream, most of us never worked together but heard about the good work each one of us have been doing. Our team members came together because we wanted to use this opportunity to know each other and be able to learn from each other.
  
 | Name | Business Unit |
 | --- | --- |
