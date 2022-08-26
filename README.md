@@ -14,9 +14,11 @@ Instant Application Decision
 ## Use Case Abstract
 In todays world Discover reaches out to any government agency or credit bureau for any information pertaining to a customer or prospective customer. There is obviously a wait time ranging from couple days to couple weeks before getting the information. Scenarios could be when applying for a new loan/credit card or existing customer having to go through credit bureau check during scenarios related to fraud on the account. 
 
+Discover doesn't do all types of verifications all the time (especially income check) due to longer timelines and only do the necessary ones hence losing to Fraud. With our solution any kind of verification is done as soon as customer scans his wallet and avoids Discover losses like First Party Fraud and Credit Bustout when using this technology at right places.
+
 In the future if customer can just provide the Digital credential(for verification) to Discover during the credit card application process or when his account is on hold for further information from agencies. Using the digital credential provided by the customer, Discover which is the verifier would  verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved.
 
-Challenge would be that all the parties involved should be ready to enbrace the technology and make themselves capable of issuing or verifying credentials.
+Challenge would be that all the parties involved should be ready to enbrace the technology and make themselves capable of issuing, verifying or holding credentials in their wallet. But in todays Digital world that doesnt seem like a big one.
 
 ## Project Artifacts
 
@@ -31,7 +33,9 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 
 ## Team Information
 
-Although from the same Value Stream, most of us never worked together but heard about the good work each one of us have been doing. Our team members came together because we wanted to use this opportunity to know each other and be able to learn from each other.
+Although from the same Value Stream, most of us never worked together but heard about the good work each one of us have been doing. Our team members came together as we wanted to use this opportunity to know each other, be able to learn from each other and develop something that will 
+* Help Discover with Business and reduced losses
+* Help our customers with great experience
  
 | Name | Business Unit |
 | --- | --- |
