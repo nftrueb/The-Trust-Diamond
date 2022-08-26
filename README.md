@@ -12,13 +12,11 @@ Instant Application Decision
 | Event Track | Hack the Code |
  
 ## Use Case Abstract
-In todays world Discover reaches out to any government agency or credit bureau for any information pertaining to a customer or prospective customer. There is obviously a wait time ranging from couple days to couple weeks before getting the information. Scenarios could be when applying for a new loan/credit card or existing customer having to go through credit bureau check during scenarios related to fraud on the account. 
-
-Discover doesn't do all types of verifications all the time (especially income check) due to longer timelines and only do the necessary ones hence losing to Fraud. With our solution any kind of verification is done as soon as customer scans his wallet and avoids Discover losses like First Party Fraud and Credit Bustout when using this technology at right places.
-
-In the future if customer can just provide the Digital credential(for verification) to Discover during the credit card application process or when his account is on hold for further information from agencies. Using the digital credential provided by the customer, Discover which is the verifier would  verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved.
-
-Challenge would be that all the parties involved should be ready to enbrace the technology and make themselves capable of issuing, verifying or holding credentials in their wallet. But in todays Digital world that doesnt seem like a big one.
+In todays world Customer applies for a credit card or personal loan they have to wait for a certain time to know the decision. This also applies to existing customers whose accounts are in review due to Fraud etc. In addition to that, Discover may not be able do all types of verifications all the time (especially income check) due to longer turnaround times hence losing to Fraud (First Party Fraud and Credit Bustout). <br />
+<br />
+With our solution any kind of verification is done as soon as we request and the customer scans his wallet. Using the digital credential provided by the customer, Discover which is the verifier would verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved.<br />
+<br />
+This brings great customer satisfaction by avoiding delays, Helps business gain more business as customer is using the card sooner than earlier, Prevents Fraud losses to Discover and saves a lot of time fr all the parties involved by avoiding the to and fro communication w.r.t verification.
 
 ## Project Artifacts
 
@@ -27,9 +25,9 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 | Use Case | [Story](./hackproject/instant-application-decision.md) |
 | Design Thinking Miro Board | [The-Trust-Diamond-whiteboard](https://miro.com/app/board/uXjVPcw_DhQ=/) |
 | Design Thinking Playback Brief | [Playback Presentation](./presentations/thetrustdiamond-playback-brief.pptx)|
-| Concept Playback Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/Ea3upMuUI2dAgLz1HcZ8vlkBGwkGt37SmcK9-hbF-nx9KA?e=f6HTuw)|
-| Concept Show-n-Tell Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/EVH3sPes0wRJn95Qzr5L-jwBveLa2w_BIvTbCzxNM6pcYQ?e=OsFho1) |
-| Code |  [Solution Readme](./hackproject/code) |
+| Concept Playback Video | [Pitch Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/Ea3upMuUI2dAgLz1HcZ8vlkBGwkGt37SmcK9-hbF-nx9KA?e=f6HTuw)|
+| Concept Show-n-Tell Video | [Working Demo Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/EVH3sPes0wRJn95Qzr5L-jwBveLa2w_BIvTbCzxNM6pcYQ?e=OsFho1) |
+| Code |  [Solution Readme](./hackproject/code/README.md) |
 
 ## Team Information
 
