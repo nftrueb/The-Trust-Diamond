@@ -27,7 +27,7 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 | Design Thinking Playback Brief | [Playback Presentation](./presentations/thetrustdiamond-playback-brief.pptx)|
 | Concept Playback Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/Ea3upMuUI2dAgLz1HcZ8vlkBGwkGt37SmcK9-hbF-nx9KA?e=f6HTuw)|
 | Concept Show-n-Tell Video | [Video URL]() |
-| Code |  [Solution Readme](./hackprokect/README.md) |
+| Code |  [Solution Readme](./hackproject/code/README.md) |
 
 
 ## Team Information
