@@ -23,9 +23,13 @@ Data from Following links has been quoted or used as a template in this use case
 ## Business Challenge
 In todays world Discover reaches out to any government agency or credit bureau for any information pertaining to a customer or prospective customer. There is obviously a wait time ranging from couple days to couple weeks before getting the information. Scenarios could be when applying for a new loan/credit card or existing customer having to go through credit bureau check during scenarios related to fraud on the account. 
 
-In the future if customer can just provide the Digital credential(for verification) to Discover during the credit card application process or when his account is on hold for further information from agencies. Using the digital credential provided by the customer, Discover which is the verifier would  verify the customer with the agency which is the Issuer.
+Discover doesn't do all types of verifications all the time (especially income check) due to longer timelines and only do the necessary ones hence losing to Fraud. With our solution any kind of verification is done as soon as customer scans his wallet and avoids Discover losses like First Party Fraud and Credit Bustout when using this technology at right places.
+
+In the future if customer can just provide the Digital credential(for verification) to Discover during the credit card application process or when his account is on hold for further information from agencies. Using the digital credential provided by the customer, Discover which is the verifier would  verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved.
 
 This not only is very fast way of verifying the (prospective) customer but also highly secure. This makes the life of customer, agency and Discover very easy as the Customer gets to use his card sooner and the agencies dont have to deal with providing same information again and again for the same customer on different occasions. Discover can approve the credit card or loan sooner and customer can start making purchases and use it. This will provide opportunity to do more business and provide great customer satisfaction both of which are very important to Discover.
+
+*Challenge* would be that all the parties involved should be ready to enbrace the technology and make themselves capable of issuing, verifying or holding credentials in their wallet. But in todays Digital world that doesnt seem like a big one.
  
 ### Concept
 The term Trust Triangle is often used when discussing the interactions between the stakeholders of credential issuance and presentment. These stakeholders, Issuer, Holder, and Verifier, depend on one another for the exchange of trusted information.
