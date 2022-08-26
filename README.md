@@ -1,7 +1,7 @@
-# Project Name
-```
-Instant Application Decision
-```
+# Instant Application Decision
+Scan Wallet and get instant Approval.</br></br>
+![app-main1](/designs/images/misc/app-main1.png)
+ ![app-main2](/designs/images/misc/app-main2.png)
 
 ## Project Details
 
@@ -12,11 +12,11 @@ Instant Application Decision
 | Event Track | Hack the Code |
  
 ## Use Case Abstract
-In todays world Customer applies for a credit card or personal loan they have to wait for a certain time to know the decision. This also applies to existing customers whose accounts are in review due to Fraud etc. In addition to that, Discover may not be able do all types of verifications all the time (especially income check) due to longer turnaround times hence losing to Fraud (First Party Fraud and Credit Bustout). <br />
+In today’s world Customer applies for a credit card or personal loan they have to wait for a certain time to know the decision. This also applies to existing customers whose accounts are in review due to Fraud etc. In addition to that, Discover may not be able do all types of verifications all the time (especially income check) due to longer turnaround times hence losing to Fraud (First Party Fraud and Credit Bust out). <br />
 <br />
-With our solution any kind of verification is done as soon as we request and the customer scans his wallet. Using the digital credential provided by the customer, Discover which is the verifier would verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved.<br />
+With our solution any kind of verification is done as soon as we request, and the customer scans his wallet. Using the digital credential provided by the customer, Discover which is the verifier would verify the customer with the agency which is the Issuer. This is both faster, secure and a time saver for all parties involved. <br />
 <br />
-This brings great customer satisfaction by avoiding delays, Helps business gain more business as customer is using the card sooner than earlier, Prevents Fraud losses to Discover and saves a lot of time fr all the parties involved by avoiding the to and fro communication w.r.t verification.
+This brings great customer satisfaction by avoiding delays, Helps business gain more business as customer is using the card sooner than earlier, Prevents Fraud losses to Discover and saves a lot of time for all the parties involved by avoiding the communication that is required w.r.t verification.
 
 ## Project Artifacts
 
