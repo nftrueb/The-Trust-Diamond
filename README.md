@@ -26,9 +26,8 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 | Design Thinking Miro Board | [The-Trust-Diamond-whiteboard](https://miro.com/app/board/uXjVPcw_DhQ=/) |
 | Design Thinking Playback Brief | [Playback Presentation](./presentations/thetrustdiamond-playback-brief.pptx)|
 | Concept Playback Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/Ea3upMuUI2dAgLz1HcZ8vlkBGwkGt37SmcK9-hbF-nx9KA?e=f6HTuw)|
-| Concept Show-n-Tell Video | [Video URL]() |
+| Concept Show-n-Tell Video | [Video URL](https://discoverfinancial-my.sharepoint.com/:v:/g/personal/nicktrueb_discover_com/EVH3sPes0wRJn95Qzr5L-jwBveLa2w_BIvTbCzxNM6pcYQ?e=OsFho1) |
 | Code |  [Solution Readme](./hackproject/code) |
-
 
 ## Team Information
 
