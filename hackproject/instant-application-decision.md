@@ -47,7 +47,6 @@ The goal is to demonstrate the end-to-end activities necessary for a customer to
 
 * Get approved for a credit card using the digital credentials from his wallet (provided by government agencies/credit bureau etc) 
 * present digital  credential as proof when needing any verifications to obtain Discover product/service
-*
 A variation of this scenario would be to consider any situation where DFS may have a business policy that requires proof of employment or income details,  identity verification or verification from any other agency. All of those can be obtained from the source and stored in customers wallet to be used for verification when needed.
 
 ![trust-diamond-triangle](/designs/images/misc/trust-diamond-triangle.jpeg)
