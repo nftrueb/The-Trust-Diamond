@@ -29,12 +29,6 @@ Challenge would be that all the parties involved should be ready to enbrace the 
 | Concept Show-n-Tell Video | [Video URL]() |
 | Code |  [Solution Readme](./hackprokect/README.md) |
 
-## Solution Decisions
-```
-Template Instructions: Optional Section. If the team has documented reasons for any of their business or technical decisions, itemize the links to the decision documents using the template in the /decisions folder.  Remove this section if nothing to list.
-```
-
-1. [ADR 01](./decisions/adr-01.md)
 
 ## Team Information
 
